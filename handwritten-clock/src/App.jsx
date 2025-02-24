@@ -1,40 +1,46 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import React, { useState, useEffect } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
 
-  async function greet() {
+  // const invoke = window.__TAURI__.core.invoke;
+  const [consoleMsg, setConsoleMsg] = useState("");
+  // const [greetMsg, setGreetMsg] = useState("");
+  const [text, setName] = useState("");
+  const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentTime(new Date().toLocaleTimeString());
+      }, 1000);
+
+      // Cleanup the interval on component unmount
+      return () => clearInterval(interval);
+    }, []);
+
+  // async function greet() {
+  //   // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+  //   setGreetMsg(await invoke("greet", { name }));
+  // }
+
+  async function printText() {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
+    setConsoleMsg(await invoke("count", { text }));
   }
 
   return (
     <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-      <h1>10:01:03</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+      <h1>{currentTime}</h1> 
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
 
       <form
         className="row"
         onSubmit={(e) => {
           e.preventDefault();
-          greet();
+          // greet();
+          printText();
+
         }}
       >
         <input
@@ -44,7 +50,7 @@ function App() {
         />
         <button type="submit">Greet</button>
       </form>
-      <p>{greetMsg}</p>
+      <p>{consoleMsg}</p>
     </main>
   );
 }

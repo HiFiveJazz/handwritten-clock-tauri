@@ -1,6 +1,12 @@
-# Tauri + React
+# Handwritten Clock
 
-This template should help get you started developing with Tauri and React in Vite.
+## To - Do List
+<li>VW scalable clock</li>
+<li>ability to import your own handwriting</li>
+<li>timer</li>
+<li>alarm</li>
+<li>ability to change timezone</li>
+<li>themes css file implementation (.config file?)</li>
 
 ## Recommended IDE Setup
 
