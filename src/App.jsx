@@ -16,31 +16,25 @@ function App() {
 
   return (
     <main className="container">
-      <Clock/>
-      <HandwrittenClock
-        folder="letters/0"
-        title="Handwritten Clock"
-        description="Cycling through SVG letters."
-        delay={100}  
-      />
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
+      {/* <Clock/> */}
+      <HandwrittenClock/>
+      {/* <form */}
+      {/*   className="row" */}
+      {/*   onSubmit={(e) => { */}
+      {/*     e.preventDefault(); */}
+      {/*     greet(); */}
+      {/*   }} */}
+      {/* > */}
+      {/*   <input */}
+      {/*     id="greet-input" */}
+      {/*     onChange={(e) => setName(e.currentTarget.value)} */}
+      {/*     placeholder="Enter a name..." */}
+      {/*   /> */}
+      {/*   <button type="submit">Greet</button> */}
+      {/* </form> */}
+      {/* <p>{greetMsg}</p> */}
     </main>
   );
 }
 
 export default App;
-

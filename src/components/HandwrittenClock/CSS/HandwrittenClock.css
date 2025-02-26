@@ -2,53 +2,24 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
-  margin: 50px;
+  gap: 0px; /* Adjusts spacing between characters dynamically */
+  margin: 5vh 0; /* Responsive margin */
+  justify-content: center;
 }
 
 .circle-video {
   flex-shrink: 0;
-  width: 4rem;
-  height: 8rem;
+  width: clamp(3rem, 10vw, 5rem); /* Scales with viewport width */
+  height: clamp(6rem, 12vw, 10rem); /* Scales with viewport width */
   border-radius: 8px;
   overflow: hidden;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   position: relative;
 }
 
 .circle-video img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
 }
-
-/* Ensure video stays inside the circular frame */
-.circle-video video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1);
-}
-
-.text-content {
-  flex: 1;
-}
-
-.text-content p {
-  font-size: 2.5rem;
-  line-height: 1.4;
-  color: #fff;
-  text-align: center;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-}
-
-@media (max-width: 768px) {
-}
-
-@media (max-width: 480px) {
-}
-
 
